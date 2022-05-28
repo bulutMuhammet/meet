@@ -1,0 +1,79 @@
+{% extends 'base/main.html' %}
+{% load static %}
+{% block content %}
+
+<main>
+
+    <section id="form-container">
+
+        <img id="logo" src="{% static 'images/lo.png' %}"/>
+
+        <div id="welcome-message">
+            <h1>PencilPie Meeting</h1>
+            <p>Dahi ekibimiz sizin için rakiplerinden çok daha iyi bir video görüşme tasarladı!</p>
+        </div>
+
+        <form id="form">
+            <div class="field-wrapper">
+
+                <div class="form-field">
+                    <label>Oda:</label>
+                    <input name="room" placeholder="Oda kimliğini gir"  />
+                </div>
+
+                <div class="form-field">
+                    <label>İsmin:</label>
+                    <input name="name" required placeholder="İsmini gir " />
+                </div>
+
+                <div class="form-field">
+                    <input type="submit" value="Katıl" />
+                </div>
+            </div>
+        </form>
+    </section>
+</main>
+
+<script>
+    let form = document.getElementById('form')
+
+    let handleSubmit = async (e) => {
+        e.preventDefault()
+        let room = e.target.room.value.toUpperCase()
+        let name = e.target.name.value
+
+        let response = await fetch(`/get_token/?channel=${room}`)
+        let data = await response.json()
+
+        let UID = data.uid
+        let token = data.token
+
+        sessionStorage.setItem('UID', UID)
+        sessionStorage.setItem('token', token)
+        sessionStorage.setItem('room', room)
+        sessionStorage.setItem('name', name)
+
+        window.open('/room/', '_self')
+    }
+
+
+
+    form.addEventListener('submit', handleSubmit)
+</script>
+<script>
+function findGetParameter(parameterName) {
+    var result = null,
+        tmp = [];
+    var items = location.search.substr(1).split("&");
+    for (var index = 0; index < items.length; index++) {
+        tmp = items[index].split("=");
+        if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+    }
+    return result;
+}
+var room_name = findGetParameter("room")
+document.getElementsByName("room")[0].value = room_name
+</script>
+
+{% endblock content %}
+
