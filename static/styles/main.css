@@ -8,7 +8,11 @@
 
 body{
     background-color: #0C1D25;
+    background-image: url('../../static/images/bg.png');
+    background-size: cover;
     font-family: 'Roboto', sans-serif;
+    background-size: 50%;
+    position: fixed;
 }
 
 
@@ -19,23 +23,23 @@ body{
     box-shadow:var(--shaddow);
     background-color: #112934;
     padding: 30px;
-    border-radius: 5px;
+    border-radius: 20px;
     position: fixed;
     top:50%;
     left:50%;
     transform: translate(-50%, -50%);
     color:white;
 }
-input{
-    background-color: #163542;
-    color:white;
-}
+
 #logo{
     display: block;
     width: 100px;
     margin: 0 auto;
 }
-
+#logo_footer{
+    width: 20px;
+    /*margin-top: 50px;*/
+}
 #welcome-message{
     text-align: center;
     margin-bottom: 20px;
@@ -63,11 +67,13 @@ input{
 
 .form-field input{
     width: 100%;
-    border:2px solid rgba(198,202,219,1);
+    border:1px solid rgb(11, 27, 36);
     border-radius: 20px;
     padding: 10px;
     font-size: 16px;
     box-sizing: border-box;
+    background-color: #163542;
+    color:white;
 }
 
 .form-field input[type='submit']{
@@ -89,6 +95,27 @@ input{
     
 }
 
+#title{
+    font-family: 'Oleo Script Swash Caps', cursive;
+    font-weight: lighter;
+    /*font-family: 'Ubuntu', sans-serif;*/
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 50px;
+  width: 100%;
+  color: white;
+  text-align: center;
+  font-family: 'Ubuntu', sans-serif;
+
+}
+
+.blue{
+    color: rgb(2, 171, 191);
+    font-size: x-large;
+}
 
 /* ----------------- Room Styling ------------------*/
 #room-name-wrapper{

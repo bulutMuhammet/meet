@@ -1,15 +1,20 @@
 {% extends 'base/main.html' %}
 {% load static %}
+{% block head %}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps&family=Ubuntu:wght@300&display=swap" rel="stylesheet">
+{% endblock %}
 {% block content %}
 
-<main>
+<main >
 
     <section id="form-container">
 
-        <img id="logo" src="{% static 'images/lo.png' %}"/>
+        <img id="logo" src="{% static 'images/logo_pp.png' %}"/>
 
         <div id="welcome-message">
-            <h1>PencilPie Meeting</h1>
+            <h1 id="title">Pielanger</h1>
             <p>Dahi ekibimiz sizin için rakiplerinden çok daha iyi bir video görüşme tasarladı!</p>
         </div>
 
@@ -31,8 +36,17 @@
                 </div>
             </div>
         </form>
+
     </section>
+
 </main>
+        <footer class="footer" >
+            from <br>
+            <span class="blue">
+                <img id="logo_footer" src="{% static 'images/lo.png' %}"/>
+                Pencilpie
+            </span>
+        </footer>
 
 <script>
     let form = document.getElementById('form')
